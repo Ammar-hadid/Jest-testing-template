@@ -5,21 +5,18 @@ export function getRank(score) {
   return 'Noob';
 }
 
-// Berekent de totale score inclusief bonus
-export function calcScore(baseScore, multiplier) {
-  if (multiplier <= 0) return 0;
-  return baseScore * multiplier;
+// Telt twee scores bij elkaar op
+export function addScores(score1, score2) {
+  return score1 + score2;
 }
 
-// Checkt of een speler een level-up verdient
-export function isLevelUp(currentLevel, score) {
-  return score >= currentLevel * 100;
+// Checkt of een speler gewonnen heeft (score >= 100)
+export function hasWon(score) {
+  return score >= 100;
 }
 
-// Geeft aan hoeveel punten je nog nodig hebt voor de volgende rank
-export function pointsUntilNextRank(score) {
-  if (score >= 100) return 0;
-  if (score >= 50)  return 100 - score;
-  if (score >= 10)  return 50 - score;
-  return 10 - score;
+// Geeft de hoogste score terug
+export function getHighScore(score1, score2) {
+  if (score1 > score2) return score1;
+  return score2;
 }
