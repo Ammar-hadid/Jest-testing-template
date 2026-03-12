@@ -1,7 +1,7 @@
 import { sortByPrice, filterByCategory, searchProducts } from './productUtils';
 
 describe('Product Utils', () => {
-  
+
   // Test data die we in meerdere tests gebruiken
   const products = [
     { id: 1, name: 'Laptop', price: 999, category: 'electronics' },
@@ -19,29 +19,33 @@ describe('Product Utils', () => {
 
   test('filterByCategory geeft alleen electronics terug', () => {
     // TODO: Filter op category 'electronics'
+    const result = filterByCategory(products, 'electronics');
     // TODO: Check of er 2 producten terugkomen
     // Hint: gebruik .toHaveLength(2)
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+    expect(result).toHaveLength(2);
   });
 
   test('filterByCategory geeft lege array bij onbekende categorie', () => {
-    // TODO: Filter op category 'clothing' (bestaat niet)
+    const result = filterByCategory(products, 'clothing');
     // TODO: Check of de array leeg is
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+    expect(result).toEqual([]); // Deze test faalt! Vervang met je eigen test
   });
 
   test('searchProducts vindt producten met zoekterm', () => {
     // TODO: Zoek naar 'bureau'
+    const result = searchProducts(products, 'bureau')
     // TODO: Check of resultaat 1 product bevat
+    expect(result).toHaveLength(1)
     // TODO: Check of dat product 'Bureau' heet
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+    expect(result[0].name).toBe('Bureau');
   });
 
   test('searchProducts is case insensitive', () => {
     // TODO: Zoek naar 'LAPTOP' (hoofdletters)
+    const result = searchProducts(products, 'LAPTOP')
     // TODO: Check of het resultaat 'Laptop' bevat
     // Hint: gebruik .toHaveLength(1)
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+    expect(result).toHaveLength(1);
   });
 
 });
