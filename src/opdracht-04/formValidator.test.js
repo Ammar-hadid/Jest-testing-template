@@ -4,12 +4,11 @@ describe('Form Validator', () => {
   let testData;
 
   beforeEach(() => {
-    // TODO: Maak hier een testData object aan met geldige gegevens
-    // testData = {
-    //   email: 'test@example.com',
-    //   phone: '0612345678',
-    //   postcode: '1234 AB'
-    // };
+    testData = {
+      email: 'test@example.com',
+      phone: '0612345678',
+      postcode: '1234 AB'
+    };
   });
 
   // VOORBEELD - Deze test is al ingevuld
@@ -18,36 +17,37 @@ describe('Form Validator', () => {
   });
 
   test('isValidEmail weigert email zonder @', () => {
-    // TODO: Test of 'testexample.com' false teruggeeft
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+    testData.email = 'testexample.com'
+    expect(isValidEmail(testData.email)).toBe(false); // Deze test faalt! Vervang met je eigen test
   });
 
   test('isValidPhone accepteert 06 nummer', () => {
-    // TODO: Test of '0612345678' geldig is
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+    expect(isValidPhone(testData.phone)).toBe(true); // Deze test faalt! Vervang met je eigen test
   });
 
   test('isValidPhone accepteert nummer met streepjes', () => {
-    // TODO: Test of '06-1234-5678' geldig is
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+    testData.phone = '06-1234-5678';
+    expect(isValidPhone(testData.phone)).toBe(true); // Deze test faalt! Vervang met je eigen test
   });
 
   test('isValidPostcode accepteert postcode met spatie', () => {
-    // TODO: Test of '1234 AB' geldig is
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+    expect(isValidPostcode(testData.postcode)).toBe(true); // Deze test faalt! Vervang met je eigen test
   });
 
   test('isValidPostcode accepteert postcode zonder spatie', () => {
-    // TODO: Test of '1234AB' geldig is
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+    testData.postcode = '1234AB';
+    expect(isValidPostcode(testData.postcode)).toBe(true); // Deze test faalt! Vervang met je eigen test
   });
 
   test('validateForm geeft errors bij ongeldig formulier', () => {
     // TODO: Gebruik de testData uit beforeEach
     // TODO: Verander testData.email naar iets ongeldig
+    testData.email = 'testexample.com';
     // TODO: Check of errors array niet leeg is
+    const result = validateForm(testData);
+
     // Hint: Je moet eerst beforeEach invullen!
-    expect(true).toBe(false); // Deze test faalt! Vervang met je eigen test
+    expect(result.errors).toContain('Ongeldig email adres'); // Deze test faalt! Vervang met je eigen test
   });
 
 });
