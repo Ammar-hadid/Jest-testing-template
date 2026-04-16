@@ -48,3 +48,4 @@ Bekijk deze pagina:
 - `input.value` geeft de huidige waarde
 - Conditional rendering: iets verschijnt alleen als er tekst is
 - Test stap voor stap: type → check wat verschijnt → klik wissen → check opnieuw
+
